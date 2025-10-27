@@ -1,9 +1,0 @@
-{
-  "routes": [
-    {
-      "route": "/api/*",
-      "allowedRoles": ["anonymous"],
-      "rewrite": "vkbsearch-hneqdwfwdsg2bxaz.eastus-01.azurewebsites.net"
-    }
-  ]
-}
