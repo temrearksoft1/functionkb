@@ -3,7 +3,7 @@
     {
       "route": "/api/*",
       "allowedRoles": ["anonymous"],
-      "rewrite": "https://<FUNCTION_APP_ADI>.azurewebsites.net/api/*"
+      "rewrite": "vkbsearch-hneqdwfwdsg2bxaz.eastus-01.azurewebsites.net"
     }
   ]
 }
