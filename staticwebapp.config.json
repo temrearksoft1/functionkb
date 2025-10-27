@@ -1,0 +1,9 @@
+{
+  "routes": [
+    {
+      "route": "/api/*",
+      "allowedRoles": ["anonymous"],
+      "rewrite": "https://<FUNCTION_APP_ADI>.azurewebsites.net/api/*"
+    }
+  ]
+}
