@@ -1,5 +1,5 @@
 import os
-from ..shared import get_search_client, get_openai_client, chat_answer
+from ..shared import get_search_client, get_openai_client
 
 def handle_ask(q: str):
     search = get_search_client()
@@ -16,7 +16,13 @@ def handle_ask(q: str):
         "If the context is insufficient, say what is missing.\n\n"
         f"Context:\n{context}\n\nQuestion: {q}\nAnswer:"
     )
+
     aoai = get_openai_client()
-    deployment = os.getenv("CHATMODELDEPLOYMENT", "gpt-4o-mini")
-    answer = chat_answer(aoai, deployment, prompt)
+    deployment = os.getenv("CHAT_MODEL_DEPLOYMENT") or os.getenv("CHATMODELDEPLOYMENT") or "gpt-4o-mini"
+    resp = aoai.chat.completions.create(
+        model=deployment,
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0.2
+    )
+    answer = resp.choices[0].message.content
     return answer, citations
